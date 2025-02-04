@@ -2,36 +2,6 @@
 
 This document provides an overview of the Game Setup UI project structure, explaining how components fit together, how data flows through the application, and thoughts on backend API design.
 
-##  Directory Structure
-
-src/
-├── components/
-│   ├── Layout/
-│   │   ├── Layout.tsx
-│   │   └── Layout.css
-│   └── StepProgress/
-│       ├── StepProgress.tsx
-│       └── StepProgress.css
-├── features/
-│   ├── map-selection/
-│   │   ├── SelectMap.tsx
-│   │   └── SelectMap.css
-│   ├── character-editor/
-│   │   ├── EditCharacter.tsx
-│   │   ├── EditCharacter.css
-│   │   ├── MultiSelectModal.tsx
-│   │   ├── MultiSelectModal.css
-│   │   ├── SpriteSelectionModal.tsx
-│   │   └── SpriteSelectionModal.css
-│   └── music-selection/
-│       ├── SelectMusic.tsx
-│       └── SelectMusic.css
-├── styles/
-│   └── global.css
-├── utils/
-│   └── types.ts
-├── App.tsx
-└── index.tsx
 
 ## Main Components
 
@@ -124,4 +94,3 @@ The project is structured to allow for easy expansion:
 
 7. Backend Development: Implement the designed API endpoints and connect them to a database to make the application fully functional.
 
-By following this structure and the principles established in the existing code, new features can be added while maintaining consistency and scalability.
