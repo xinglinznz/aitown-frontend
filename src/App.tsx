@@ -6,12 +6,11 @@ import { SelectMusic } from "./features/music-selection/SelectMusic"
 import { StepProgress } from "./components/StepProgress/StepProgress"
 import "./styles/global.css"
 
-// Note: In a real application, you would import API functions from a separate file
-// import { fetchGameSetup, updateGameSetup } from './api/gameSetup'
-
+// Define the possible pages in the setup process
 type Page = "selectMap" | "editCharacter" | "selectMusic"
 
 function App() {
+  // State management for the current page and selected items
   const [currentPage, setCurrentPage] = useState<Page>("selectMap")
   const [selectedMap, setSelectedMap] = useState<number | null>(null)
   const [selectedCharacter, setSelectedCharacter] = useState<number | null>(null)
@@ -19,7 +18,7 @@ function App() {
 
   const steps = ["Select Map", "Edit Character", "Select Music"]
 
-  // Note: In a real application, you would fetch the initial game setup from the backend
+  // In a real application, you would fetch the initial game setup from the backend
   // useEffect(() => {
   //   const loadGameSetup = async () => {
   //     const setup = await fetchGameSetup()
@@ -30,6 +29,7 @@ function App() {
   //   loadGameSetup()
   // }, [])
 
+  // Navigation handlers
   const handleNext = () => {
     if (currentPage === "selectMap" && selectedMap) {
       setCurrentPage("editCharacter")
@@ -46,9 +46,10 @@ function App() {
     }
   }
 
+  // Save handler - in a real app, this would interact with the backend
   const handleSave = () => {
     if (selectedMap && selectedCharacter && selectedMusic) {
-      // Note: In a real application, you would save the game setup to the backend
+      // In a real application, you would save the game setup to the backend
       // updateGameSetup({ mapId: selectedMap, characterId: selectedCharacter, musicId: selectedMusic })
       alert(`Saved! Map: ${selectedMap}, Character: ${selectedCharacter}, Music: ${selectedMusic}`)
     } else {
@@ -56,6 +57,7 @@ function App() {
     }
   }
 
+  // Helper function to determine the current step for the progress bar
   const getCurrentStep = () => {
     switch (currentPage) {
       case "selectMap":
@@ -70,6 +72,7 @@ function App() {
   return (
     <Layout>
       <StepProgress currentStep={getCurrentStep()} steps={steps} />
+      {/* Render the appropriate component based on the current page */}
       {currentPage === "selectMap" && (
         <SelectMap selectedMap={selectedMap} setSelectedMap={setSelectedMap} onNext={handleNext} />
       )}
